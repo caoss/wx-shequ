@@ -1,0 +1,53 @@
+<!--pages/home.wxml-->
+<view class="home-con">
+
+    <view class='no_login' wx:if='{{ !isLogin }}'>
+         <image class="icon_login" src="../../images/icon_login.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+        <button class='for_login' open-type="getUserInfo" bindgetuserinfo='getUserInfoFun'>
+            <image class="icon_login_btn" src="../../images/icon_loginbtn.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+        </button>
+    </view>
+
+     <view class='main' wx:if='{{ isLogin && isNoData }}'> 
+        <view class='icon_kong_box'>
+            <image class="icon_kong" src="../../images/icon_kong.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+            <view class='icon_kong_txt'>
+                暂无收藏
+            </view>
+        </view>
+    </view>
+
+    <view class='main' wx:if='{{ isLogin && !isNoData }}'> 
+        <view class='top_txt'>
+            收藏 {{ props.homeStore.collectListDatas.total }} 条
+        </view>
+        <view class='icon_kong_box' wx:if='{{false}}'>
+            <image class="icon_kong" src="../../images/icon_kong.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+        </view>
+        <scroll-view class='scroll_box' scroll-y="true" bindscrolltolower="_loadMoreWallPaper" lower-threshold="_loadMoreWallPaper"> 
+            <view class='rmd_con' wx:for="{{ props.homeStore.collectListDatas.list }}"  wx:key='{{ id }}'>
+                <view class='rmd_item' bindtap='_toDetail' data-id='{{ item.id }}'>
+                    <view class='rmd_txt'>
+                        <view class='rmd_txt_content' >
+                            {{ item.content }}
+                        </view>
+                        <view class='rmd_txt_bot'>
+                            <view class='rmd_tb_c'>
+                                <image class='rmd_tb_i' src="{{ item.posterAvatar }}" mode='aspectFill'></image>
+                            </view>
+                            <view class='rmd_tb_n'>
+                                {{ item.posterName }}
+                            </view>
+                        </view>
+                    </view>
+                    <view class='rmd_img' wx:if='{{ item.images.length>0 }}'>
+                        <image class='img_rmd' src="{{ item.images[0].url+'?imageMogr2/thumbnail/320x' }}" mode='aspectFill'></image>
+                    </view>
+                </view>
+            </view>
+            <load-more loadStatus="{{loadStatus}}"></load-more>
+        </scroll-view>
+    </view>
+   
+
+</view>

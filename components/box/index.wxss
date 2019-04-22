@@ -1,0 +1,47 @@
+.box_close{
+    position: fixed;
+    width: 92rpx;
+    height: 140rpx;
+    z-index: 9999;
+    left: 0;
+    top: 100rpx;
+    transition: all 0.3s ease;
+}
+.isClose{
+    left: -92rpx;
+}
+.box_open_img{
+    width: 100%;
+}
+
+.box_open{
+    transition: all 0.5s ease;
+    position: fixed;
+    width: 420rpx;
+    height: 420rpx;
+    z-index: 9999;
+    left: -580rpx;
+    top: 100rpx;
+    background: rgb(255, 186, 209);
+    border-radius: 20rpx;
+    border: 20rpx solid rgb(255, 83, 142);
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    align-content: flex-start
+}
+.isOpen{
+    left: 8rpx;
+}
+.hide_btn{
+    position: absolute;
+    right: -95rpx;
+    top: -20rpx;
+    width: 90rpx;
+}
+.box1{
+    width: 30%;
+    margin-left: 2.5%;
+    margin-top: 16rpx;
+}

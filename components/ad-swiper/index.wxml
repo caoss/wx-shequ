@@ -1,0 +1,17 @@
+<!--pages/home.wxml-->
+<view class="box">
+    <swiper
+        indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}"
+        interval="{{interval}}"
+        duration="{{duration}}"
+        circular='{{ circular }}'
+    >
+    <block wx:for="{{imgUrls}}" wx:key='{{ index }}'>
+        <swiper-item>
+            <image src="{{item}}" class="slide-image" mode="widthFix" data-index='{{ index }}' bindtap='_redirect' />
+        </swiper-item>
+    </block>
+    </swiper>
+</view>
+

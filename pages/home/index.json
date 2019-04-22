@@ -1,0 +1,14 @@
+{
+    "navigationBarBackgroundColor": "#FA7082",
+    "navigationBarTextStyle": "light",
+    "navigationBarTitleText": "虾皮段子",
+    "backgroundColor": "#fff",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "usingComponents": { 
+        "load-more": "/components/load-more/index",
+        "x-image": "/components/xing-components/x-image",
+        "box": "/components/box/index",
+        "ad_swiper": "/components/ad-swiper/index"
+    }
+}

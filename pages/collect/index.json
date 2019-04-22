@@ -1,0 +1,10 @@
+{
+    "navigationBarBackgroundColor": "#FA7082",
+    "navigationBarTextStyle": "light",
+    "navigationBarTitleText": "虾皮段子",
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "light",
+    "usingComponents": { 
+        "load-more": "/components/load-more/index"
+    }
+}

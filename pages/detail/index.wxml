@@ -1,0 +1,95 @@
+<!--pages/home.wxml-->
+<view class="home-con">
+    <view class='main'>
+        <scroll-view class='scroll_box' scroll-y="true" scroll-top='{{ scrollTop }}'> 
+            <view class='pop' wx:if='{{ isShare }}' ></view>
+            <view class ='item'>
+                <view class='item_header'>
+                    <view class='item_h_avtar'>
+                        <image class='item_h_avtar_img' src="{{ props.homeStore.videoDetail.posterAvatar }}" mode='aspectFill'></image>
+                    </view>
+                    <view class='item_h_name'>
+                        {{ props.homeStore.videoDetail.posterName }}
+                    </view>
+                </view>
+                <view class="text_box">
+                    {{ props.homeStore.videoDetail.content }}
+                </view>
+
+                <view class="item_banner" wx:if='{{ props.homeStore.videoDetail.images.length>0 }}'>
+                    <x-image class="img_banner"  bindtap='_tapPreview' mode='aspectFill' data-url ='{{ props.homeStore.videoDetail.images[0].thumbnailUrl }}' src="{{ props.homeStore.videoDetail.images[0].thumbnailUrl }} " ></x-image>
+                    <view class='long_img' bindtap='_tapPreview' data-url ='{{ props.homeStore.videoDetail.images[0].thumbnailUrl }}'>
+                        点击查看原图
+                    </view>
+                </view>
+                
+                <view class="item_edit_main">
+                    <view class="item_edit">
+                        <button class='item_edit_btn' open-type="getUserInfo" data-id='{{ props.homeStore.videoDetail.id }}' data-liked='{{ props.homeStore.videoDetail.liked }}' data-collected='{{ props.homeStore.videoDetail.collected }}'  bindgetuserinfo="_like">
+                            <image wx:if='{{ !props.homeStore.videoDetail.liked }}' class="icon_zan" src="../../images/icon_like.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+                            <image wx:if='{{ props.homeStore.videoDetail.liked }}' class="icon_zan" src="../../images/icon_liked.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+                            {{ props.homeStore.videoDetail.likeCount }}
+                        </button>
+                    </view>
+                    <view class="item_edit">
+                        <button class='item_edit_btn' open-type="getUserInfo" data-id='{{ props.homeStore.videoDetail.id }}' data-disliked='{{ props.homeStore.videoDetail.disliked }}'  bindgetuserinfo="_dislike">
+                            <image wx:if='{{ !props.homeStore.videoDetail.disliked }}' class="icon_zan" src="../../images/icon_hate.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+                            <image wx:if='{{ props.homeStore.videoDetail.disliked }}' class="icon_zan" src="../../images/icon_hated.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+                            {{ props.homeStore.videoDetail.dislikeCount }}
+                        </button>
+                    </view>
+                    <view class="item_edit btn_share">
+                        <button open-type="share">
+                            <image class='icon_zan' src="../../images/icon_share.png" mode='aspectFill'></image>
+                            {{ props.homeStore.videoDetail.shareCount }}
+                        </button>
+                    </view>
+                    <view class="item_edit">
+                        <button class='item_edit_btn' open-type="getUserInfo" data-id='{{ props.homeStore.videoDetail.id }}' data-collected='{{ props.homeStore.videoDetail.collected }}'  bindgetuserinfo="_collect">
+                            <image wx:if='{{ !props.homeStore.videoDetail.collected }}' class="icon_zan" src="../../images/icon_collec.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+                            <image wx:if='{{ props.homeStore.videoDetail.collected }}' class="icon_zan" src="../../images/icon_collected.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+                            {{ props.homeStore.videoDetail.collectCount }}
+                        </button>
+                    </view>
+                </view>
+            </view>
+
+
+             <view class='recommend_main'>
+                <view class='recommend_tit'>
+                    相关推荐
+                </view>
+                <view class='rmd_con' wx:for="{{ props.homeStore.videoRelative }}"  wx:key='{{ id }}'>
+                    <view class='rmd_item' bindtap='_toDetail' data-id='{{ item.id }}' >
+                        <view class='rmd_txt'>
+                            <view class='rmd_txt_content'>
+                                {{ item.content }}
+                            </view>
+                            <view class='rmd_txt_bot'>
+                                <view class='rmd_tb_c'>
+                                    <image class='rmd_tb_i' src="{{ item.posterAvatar }}" mode='aspectFill'></image>
+                                </view>
+                                <view class='rmd_tb_n'>
+                                    {{ item.posterName }}
+                                </view>
+                            </view>
+                        </view>
+
+                        <view  class='rmd_img' wx:if='{{ item.images.length>0 }}' >
+                            <image  wx:if='{{ item.images[0].format != "gif" }}' class='img_rmd' src="{{ item.images[0].url+'?imageMogr2/thumbnail/200x' }}" mode='aspectFill'></image>
+                            <image  wx:if='{{ item.images[0].format == "gif" }}' class='img_rmd' src="{{ item.images[0].url+'?imageMogr2/thumbnail/200x/format/png' }}" mode='aspectFill'></image>
+                        </view>
+
+                    </view>
+
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <!--
+        <view class='pop' ></view>
+    -->
+    <box />
+    <ad_swiper />
+</view>
+

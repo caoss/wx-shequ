@@ -1,0 +1,17 @@
+<!--pages/home.wxml-->
+<view class="box_close {{ isOpen?'isClose':'' }}" bindtap='_open'>
+    <image class="box_open_img" src="../img/icon_open@2x.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+</view>
+<view class="box_open {{ isOpen?'isOpen':''}}">
+    <view class='hide_btn' bindtap='_close'>
+        <image class="box_open_img" src="../img/icon_back@2x.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+    </view>
+    
+     <block wx:for="{{imgUrls}}" wx:key='{{ index }}'>
+        <view class='box1'>
+            <image class="box_open_img" bindtap='_redirect' data-index='{{index}}'  src="{{ item }}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+        </view>
+    </block>
+    
+</view>
+

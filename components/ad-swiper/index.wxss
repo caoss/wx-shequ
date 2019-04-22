@@ -1,0 +1,10 @@
+.box{
+    position: fixed;
+    right: 0;
+    top:90rpx;
+    z-index: 9999;
+    width:150rpx;
+}
+.slide-image{
+    width: 100%;
+}
